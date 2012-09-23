@@ -1,0 +1,34 @@
+<p><%= notice %></p>
+
+
+<h1>Sondage</h1>
+
+
+<% if @question %>
+
+	<h4>
+		<%= @question.title %>
+	</h4>
+	
+	
+	<%= form_for :reponse do |f| %>
+	  <%= f.hidden_field :question_id, :value => @question.id %>	  
+	  <%= f.radio_button :answer, @question.answer_1 %><%= @question.answer_1 %><br />
+	  <%= f.radio_button :answer, @question.answer_2 %><%= @question.answer_2 %><br />
+	  <%= f.submit "Envoyer" %>
+	<% end %>
+<% else %>
+	<h4>
+		Pas de sondage pour le moment.
+	</h4>
+<% end %>
+
+<br />
+<br />
+<br />
+
+<%= link_to 'Voir les reponses', show_answers_reponses_path %>
+<br />
+<br />
+<br />
+<%= link_to 'Admin', admin_questions_path %>
